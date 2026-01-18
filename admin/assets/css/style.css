@@ -1,0 +1,320 @@
+/* Admin UI Theme - Ministry of Hajj & Umrah Style (Unified Brown/Gold) */
+:root {
+    /* Palette from Public Pages */
+    --bright-gradient-start: #C19A6B;
+    /* Camel / Light Brown */
+    --bright-gradient-end: #5D4037;
+    /* Dark Brown */
+    --bright-gradient-alt-start: #D4AF37;
+    /* Gold */
+    --bright-gradient-alt-end: #AA6C39;
+    /* Bronze */
+
+    --primary-color: #5D4037;
+    /* Dark Brown */
+    --primary-light: #795548;
+    /* Lighter Brown */
+    --primary-dark: #3E2723;
+    /* Deep Brown */
+
+    --secondary-color: #D4AF37;
+    /* Gold */
+    --secondary-dark: #AA6C39;
+    /* Bronze */
+
+    --accent-color: #F8F9FA;
+    /* Light Background */
+    --text-color: #333333;
+    --text-muted: #6c757d;
+
+    /* Sidebar Specifics */
+    --sidebar-bg: #5D4037;
+    /* Dark Brown Background */
+    --sidebar-text: #FFFFFF;
+    --sidebar-active-bg: rgba(212, 175, 55, 0.2);
+    /* Gold tint */
+    --sidebar-active-border: #D4AF37;
+    /* Gold Border */
+
+    /* Gradients */
+    --gradient-main: linear-gradient(135deg, var(--bright-gradient-start) 0%, var(--bright-gradient-end) 100%);
+    --gradient-accent: linear-gradient(135deg, var(--bright-gradient-alt-start) 0%, var(--bright-gradient-alt-end) 100%);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f6f9;
+    color: var(--text-color);
+}
+
+/* --- Common UI Elements --- */
+.text-primary-custom {
+    color: var(--primary-color) !important;
+}
+
+.text-secondary-custom {
+    color: var(--secondary-color) !important;
+}
+
+.btn-primary-custom {
+    background: var(--gradient-main);
+    border: none;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.btn-primary-custom:hover {
+    filter: brightness(1.1);
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(93, 64, 55, 0.3);
+}
+
+.card-custom {
+    border: none;
+    border-radius: 0.75rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    background-color: #fff;
+}
+
+.page-title {
+    color: var(--primary-color);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+/* --- Login Page --- */
+.login-body {
+    background: var(--gradient-main);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-card {
+    border: none;
+    border-radius: 1rem;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    max-width: 900px;
+    width: 100%;
+}
+
+/* --- Sidebar --- */
+.sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    width: 260px;
+    padding: 0;
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(180deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    transition: all 0.3s ease-in-out;
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    overflow-y: auto;
+    /* Scrollable if content is long */
+}
+
+/* Sidebar Header */
+.sidebar .sidebar-header {
+    height: 70px;
+    /* Fixed height for header */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.15);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0 1.5rem;
+}
+
+.sidebar .sidebar-header h5 {
+    color: var(--secondary-color);
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    font-size: 1.1rem;
+}
+
+/* Navigation Links */
+.sidebar .nav-link {
+    color: rgba(255, 255, 255, 0.85);
+    padding: 16px 25px;
+    border-left: 5px solid transparent;
+    transition: all 0.25s ease;
+    font-weight: 500;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar .nav-link i {
+    color: var(--secondary-color);
+    /* Gold icons */
+    margin-right: 12px;
+    font-size: 1.1rem;
+    width: 24px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.sidebar .nav-link:hover {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.08);
+    /* Slightly lighter on hover */
+    padding-left: 30px;
+    /* Slide effect */
+}
+
+.sidebar .nav-link:hover i {
+    transform: scale(1.1);
+    /* Icon subtle zoom */
+}
+
+.sidebar .nav-link.active {
+    color: #fff;
+    background: linear-gradient(90deg, rgba(212, 175, 55, 0.15) 0%, transparent 100%);
+    /* Gold tint gradient */
+    border-left-color: var(--secondary-color);
+    /* Gold border */
+    font-weight: 600;
+}
+
+/* --- Main Content Adjustment --- */
+.main-content {
+    margin-left: 260px;
+    /* Match sidebar width */
+    padding-top: 80px;
+    /* Offset for fixed navbar */
+    min-height: 100vh;
+    transition: margin-left 0.3s ease-in-out;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 767.98px) {
+    .sidebar {
+        transform: translateX(-100%);
+        /* Hide by default on mobile */
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+        /* Show when active */
+    }
+
+    .main-content {
+        margin-left: 0;
+        /* Full width on mobile */
+    }
+
+    /* Overlay effect when sidebar is open on mobile */
+    .sidebar.active::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        right: -100vw;
+        bottom: 0;
+        left: 260px;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: -1;
+    }
+}
+
+
+/* --- Navbar --- */
+.navbar-admin {
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid #e9ecef;
+    height: 70px;
+    /* Match sidebar header height if desired, or auto */
+    z-index: 101;
+    /* Above sidebar on small screens if needed, or sidebar above? usually navbar is on top or next to it. */
+    padding-left: 0;
+    /* Align with layout */
+}
+
+@media (min-width: 768px) {
+    .navbar-admin {
+        margin-left: 260px;
+        /* Push navbar to right on desktop */
+        width: calc(100% - 260px);
+        /* Adjust width */
+    }
+}
+
+
+.navbar-brand {
+    color: var(--primary-color) !important;
+    font-weight: 700;
+}
+
+.navbar-admin .nav-link {
+    color: var(--text-color) !important;
+    font-weight: 500;
+}
+
+/* --- Dashboard Stats --- */
+.card-admin-stat {
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card-admin-stat:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card-admin-stat .card-body {
+    padding: 1.5rem;
+}
+
+.stat-icon {
+    font-size: 3rem;
+    opacity: 0.25;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+.stat-value {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.stat-label {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    opacity: 0.9;
+    font-weight: 600;
+}
+
+/* Specific colors for stat cards */
+.bg-primary-gradient {
+    /* Use the Main Brown Gradient */
+    background: var(--gradient-main);
+    color: white;
+}
+
+.bg-gold-gradient {
+    /* Use the Accent Gold/Bronze Gradient */
+    background: var(--gradient-accent);
+    color: white;
+}
+
+/* Table Enhancements */
+.table-hover tbody tr:hover {
+    background-color: rgba(212, 175, 55, 0.05);
+    /* Very light gold tint */
+}
+
+.table thead {
+    background-color: var(--primary-color);
+    color: white;
+}
